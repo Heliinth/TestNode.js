@@ -7,7 +7,6 @@ async function scrape() {
    await page.goto('https://shopee.co.th/product/868934469/22203139798')
    var element = await page.waitForSelector("span[class='KmiQIK']")
    var text = await page.evaluate(element => element.textContent, element)
-  // return text;
    console.log(text)
    browser.close()
 }
