@@ -1,13 +1,18 @@
-const puppeteer = require('puppeteer')
+const express = require('express');
+const chalk = require('chalk');
+const debug = require('debug')('app');
+const morgan = require('morgan');
+const app = express();
+const port = 3000;
 
-async function scrape() {
-   const browser = await puppeteer.launch({})
-   const page = await browser.newPage()
+app.use(morgan('combined'));
 
-   await page.goto('https://shopee.co.th/product/868934469/22203139798')
-   var element = await page.waitForSelector("span[class='KmiQIK']")
-   var text = await page.evaluate(element => element.textContent, element)
-   console.log(text)
-   browser.close()
-}
-scrape()
+app.get("/", (req,res) => {
+
+    res.send("Fuck Yofafafafassdsdfdaf");
+
+})
+
+app.listen(port, ()=>{
+    debug("Listening on port heheh", chalk.red(" : " + port));
+})
